@@ -1,0 +1,19 @@
+banner:
+  location: classpath:header.txt
+
+spring:
+  jpa:
+    database: h2
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: h2
+  http:
+    converters:
+      preferred-json-mapper: jackson
+
+logging:
+  level:
+    org.springframework.web: INFO

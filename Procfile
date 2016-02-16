@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.datasource.url=$DATABASE_URL -jar  target/demo-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.datasource.url=$DATABASE_URL -jar  target/company-registry-0.0.1-SNAPSHOT.jar

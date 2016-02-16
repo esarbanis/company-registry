@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.datasource.url=$DATABASE_URL -Dspring.datasource.username=$DATABASE_USER -Dspring.datasource.password=$DATABASE_PASSWORD -jar target/company-registry-0.0.1-SNAPSHOT.jar
+web: java -jar target/company-registry-0.0.1-SNAPSHOT.jar --server.port=$PORT --spring.datasource.url=$DATABASE_URL --spring.datasource.username=$DATABASE_USER --spring.datasource.password=$DATABASE_PASSWORD

@@ -1,1 +1,1 @@
-web: java -jar target/company-registry-0.0.1-SNAPSHOT.jar --server.port=$PORT --spring.datasource.url=$DATABASE_URL --spring.datasource.username=$DATABASE_USER --spring.datasource.password=$DATABASE_PASSWORD
+web: java -jar target/company-registry-0.0.1-SNAPSHOT.jar --server.port=$PORT --spring.datasource.url=$JDBC_URL --spring.datasource.username=$DATABASE_USER --spring.datasource.password=$DATABASE_PASSWORD

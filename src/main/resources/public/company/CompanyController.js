@@ -4,6 +4,7 @@
         .module('companies')
         .controller('CompanyController', [
             'companyService',
+            'formModal',
             CompanyController
         ]);
 
@@ -11,7 +12,7 @@
      * Main Controller for the Angular Material Starter App
      * @constructor
      */
-    function CompanyController(companyService) {
+    function CompanyController(companyService, formModal) {
         var vm = this;
 
         vm.companies = [];
@@ -21,16 +22,15 @@
         vm.update = Update;
         vm.save = Save;
         vm.remove = Remove;
+        vm.showAddDialog = ShowModalDialog;
 
         // Load all registered users
-
-        Init();
+        init();
 
         // *********************************
         // Internal methods
         // *********************************
-
-        function Init() {
+        function init() {
             companyService
                 .loadAllCompanies()
                 .then(function (companies) {
@@ -40,30 +40,38 @@
 
         function Edit(comp) {
             vm.newComp = comp;
+            formModal.show();
         }
 
         function Remove(comp) {
-            if(!confirm('Do you really want to remove '+comp.name)) {
+            if (!confirm('Do you really want to remove ' + comp.name)) {
                 return;
             }
             companyService.remove(comp).then(function (response) {
                 vm.newComp = {};
-                Init();
+                init();
             });
         }
 
         function Save() {
             companyService.save(vm.newComp).then(function (response) {
                 vm.newComp = {};
-                Init();
+                init();
+                formModal.hide();
             });
         }
 
         function Update() {
             companyService.update(vm.newComp).then(function (response) {
                 vm.newComp = {};
-                Init();
+                init();
+                formModal.hide();
             });
+        }
+
+        function ShowModalDialog() {
+            vm.newComp = {};
+            formModal.show();
         }
     }
 

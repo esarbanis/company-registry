@@ -1,4 +1,4 @@
-<form>
+<form name="compForm">
     <div class="form-group">
         <label for="name">Name</label>
         <input ng-model="comp.name" type="text" class="form-control" id="name" placeholder="Email">
@@ -27,6 +27,6 @@
         <label>Owners</label>
         <tags-input ng-model="comp.owners" display-property="name"></tags-input>
     </div>
-    <button type="submit" ng-hide="comp.id" class="btn btn-default" ng-click="onsave()" data-dismiss="modal">Save</button>
-    <button type="submit" ng-show="comp.id" class="btn btn-default" ng-click="onupdate()" data-dismiss="modal">Update</button>
+    <button type="submit" ng-if="!comp.id" class="btn btn-default" ng-click="compForm.$valid ? onsave() : return;">Save</button>
+    <button type="submit" ng-if="comp.id" class="btn btn-default" ng-click="compForm.$valid ? onupdate() : return;">Update</button>
 </form>

@@ -40,7 +40,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="navbar-form">
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#formModal">
+                <button class="btn btn-primary btn-lg" data-toggle="modal" ng-click="ctrl.showAddDialog()">
                     Add
                 </button>
             </li>
@@ -90,7 +90,7 @@
                     <td>
                         <span ng-repeat="owner in comp.owners">{{owner.name}} </span>
                     </td>
-                    <td class="pointer" ng-click="ctrl.edit(comp)" data-toggle="modal" data-target="#formModal"><i
+                    <td class="pointer" ng-click="ctrl.edit(comp)"><i
                             class="glyphicon glyphicon-pencil"></i></td>
                     <td class="pointer" ng-click="ctrl.remove(comp)"><i class="glyphicon glyphicon-remove"></i></td>
                 </tr>

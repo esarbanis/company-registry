@@ -12,6 +12,8 @@
     function CompanyDirective() {
         return {
             restrict: 'E',
+            controller: ['errorRegistry', DirectiveController],
+            controllerAs: 'errorRegistry',
             scope: {
                 onsave: '&',
                 onupdate: '&',
@@ -20,5 +22,29 @@
             templateUrl: 'company/view/companyForm.tpl.html'
         };
     };
+
+    /**
+     * Controller for wrapping the <code>errorRegistry</code>
+     *
+     * @param errorRegistry the delegate
+     * @returns {DirectiveController}
+     */
+    function DirectiveController(errorRegistry){
+        var vm = this;
+
+        vm.hasError = HasError;
+        vm.getMessage = GetMessage;
+
+        function HasError(path) {
+            return errorRegistry.hasError(path);
+        }
+
+        function GetMessage(path) {
+            return errorRegistry.getMessage(path);
+        }
+
+        return vm;
+    };
+
 
 })();

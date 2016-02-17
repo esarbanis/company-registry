@@ -1,31 +1,38 @@
 <form name="compForm">
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('name')}">
         <label for="name">Name</label>
-        <input ng-model="comp.name" type="text" class="form-control" id="name" placeholder="Email">
+        <input ng-model="comp.name" type="text" class="form-control" id="name" placeholder="Name">
+        <span ng-if="errorRegistry.hasError('name')" class="help-block">{{errorRegistry.getMessage('name')}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('address')}">
         <label for="address">Address</label>
         <textarea ng-model="comp.address" class="form-control" id="address" placeholder="Address"></textarea>
+        <span ng-if="errorRegistry.hasError('address')" class="help-block">{{errorRegistry.getMessage('address')}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('city')}">
         <label for="city">City</label>
         <input ng-model="comp.city" type="text" class="form-control" id="city" placeholder="City">
+        <span ng-if="errorRegistry.hasError('city')" class="help-block">{{errorRegistry.getMessage('city')}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('country')}">
         <label for="country">Country</label>
         <input ng-model="comp.country" type="text" class="form-control" id="country" placeholder="Country">
+        <span ng-if="errorRegistry.hasError('country')" class="help-block">{{errorRegistry.getMessage('country')}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('email')}">
         <label for="email">Email</label>
         <input ng-model="comp.email" type="email" class="form-control" id="email" placeholder="Email">
+        <span ng-if="errorRegistry.hasError('email')" class="help-block">{{errorRegistry.getMessage('email')}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('phone')}">
         <label for="phone">Phone</label>
         <input ng-model="comp.phone" type="text" class="form-control" id="phone" placeholder="Phone">
+        <span ng-if="errorRegistry.hasError('phone')" class="help-block">{{errorRegistry.getMessage('phone')}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('owners')}">
         <label>Owners</label>
         <tags-input ng-model="comp.owners" display-property="name"></tags-input>
+        <span ng-if="errorRegistry.hasError('owners')" class="help-block">{{errorRegistry.getMessage('owners')}}</span>
     </div>
     <button type="submit" ng-if="!comp.id" class="btn btn-default" ng-click="compForm.$valid ? onsave() : return;">Save</button>
     <button type="submit" ng-if="comp.id" class="btn btn-default" ng-click="compForm.$valid ? onupdate() : return;">Update</button>

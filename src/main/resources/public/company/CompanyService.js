@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('companies')
-        .service('companyService', ['$http', '$q', CompanyService]);
+        .service('companyService', ['$http', '$q', 'errorRegistry', CompanyService]);
 
     /**
      * Companies DataService
@@ -13,8 +13,9 @@
      * @param $q used to reject the promise in case of errors
      * @returns {{loadAllCompanies: loadAllCompanies, save: save, update: update, remove: remove}}
      */
-    function CompanyService($http, $q) {
-        function ErrorHandler() {
+    function CompanyService($http, $q, errorRegistry) {
+        function ErrorHandler(response) {
+            errorRegistry.addAll(response.data);
             return $q.reject();
         }
 

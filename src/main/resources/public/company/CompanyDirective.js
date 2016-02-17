@@ -5,8 +5,12 @@
     angular.module('companies')
         .directive('companyForm', CompanyDirective);
 
+    /**
+     * The company form directive, will render a form for managing a company's data.
+     * @returns {{restrict: string, scope: {onsave: string, onupdate: string, comp: string}, templateUrl: string}}
+     */
     function CompanyDirective() {
-        var directive = {
+        return {
             restrict: 'E',
             scope: {
                 onsave: '&',
@@ -15,7 +19,6 @@
             },
             templateUrl: 'company/view/companyForm.tpl.html'
         };
-        return directive;
     };
 
 })();

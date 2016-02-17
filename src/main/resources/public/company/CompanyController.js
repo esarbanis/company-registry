@@ -9,8 +9,10 @@
         ]);
 
     /**
-     * Main Controller for the Angular Material Starter App
+     * Main Controller for the Company Registry Application
      * @constructor
+     * @param companyService The service to delegate all calls to the backend api
+     * @param formModal The modal where the company form is placed
      */
     function CompanyController(companyService, formModal) {
         var vm = this;
@@ -27,9 +29,9 @@
         // Load all registered users
         init();
 
-        // *********************************
-        // Internal methods
-        // *********************************
+        /**
+         * Initialize the company list
+         */
         function init() {
             companyService
                 .loadAllCompanies()
@@ -38,11 +40,22 @@
                 });
         }
 
+        /**
+         * Edits the selected company by opening up a prefilled modal form.
+         * @param comp the company to edit
+         */
         function Edit(comp) {
             vm.newComp = comp;
             formModal.show();
         }
 
+        /**
+         * Removes the selected company after the user confirms his/hers action.
+         * <p>
+         * Should call the <code>companyService</code> to send the request to the backed.
+         * </p>
+         * @param comp the company to remove
+         */
         function Remove(comp) {
             if (!confirm('Do you really want to remove ' + comp.name)) {
                 return;
@@ -53,6 +66,13 @@
             });
         }
 
+        /**
+         * Callback to be associated with the <code>formModal</code>'s save action.
+         * <p>
+         * Should call the backend api through <code>companyService</code> to persist the contents
+         * of the modal's form.
+         * </p>
+         */
         function Save() {
             companyService.save(vm.newComp).then(function (response) {
                 vm.newComp = {};
@@ -61,6 +81,13 @@
             });
         }
 
+        /**
+         * Callback to be associated with the <code>formModal</code>'s update action.
+         * <p>
+         * Should call the backend api through <code>companyService</code> to update the contents
+         * of the selected company according to the modal's form values.
+         * </p>
+         */
         function Update() {
             companyService.update(vm.newComp).then(function (response) {
                 vm.newComp = {};
@@ -69,6 +96,12 @@
             });
         }
 
+        /**
+         * Should be called to open up the <code>formModal</code>.
+         * <p>
+         *     Calling this method will result to an empty modal form.
+         * </p>
+         */
         function ShowModalDialog() {
             vm.newComp = {};
             formModal.show();

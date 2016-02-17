@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  // Setup modal functions
+  // Setup modal
   var formModal = $('#formModal');
   formModal.show = function() {
     this.modal('show');

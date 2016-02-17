@@ -15,5 +15,4 @@
       .module('companies', ['ngTagsInput'])
       .value('formModal', formModal);
 
-
 })();

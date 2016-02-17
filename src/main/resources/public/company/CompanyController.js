@@ -5,6 +5,7 @@
         .controller('CompanyController', [
             'companyService',
             'formModal',
+            'errorRegistry',
             CompanyController
         ]);
 
@@ -14,7 +15,7 @@
      * @param companyService The service to delegate all calls to the backend api
      * @param formModal The modal where the company form is placed
      */
-    function CompanyController(companyService, formModal) {
+    function CompanyController(companyService, formModal, errorRegistry) {
         var vm = this;
 
         vm.companies = [];
@@ -28,6 +29,10 @@
 
         // Load all registered users
         init();
+
+        formModal.on('hide.bs.modal', function() {
+           errorRegistry.reset();
+        });
 
         /**
          * Initialize the company list
@@ -45,7 +50,7 @@
          * @param comp the company to edit
          */
         function Edit(comp) {
-            vm.newComp = comp;
+            vm.newComp = angular.extend({}, comp);
             formModal.show();
         }
 
@@ -60,7 +65,7 @@
             if (!confirm('Do you really want to remove ' + comp.name)) {
                 return;
             }
-            companyService.remove(comp).then(function (response) {
+            companyService.remove(comp).then(function () {
                 vm.newComp = {};
                 init();
             });
@@ -74,7 +79,7 @@
          * </p>
          */
         function Save() {
-            companyService.save(vm.newComp).then(function (response) {
+            companyService.save(vm.newComp).then(function () {
                 vm.newComp = {};
                 init();
                 formModal.hide();
@@ -89,7 +94,7 @@
          * </p>
          */
         function Update() {
-            companyService.update(vm.newComp).then(function (response) {
+            companyService.update(vm.newComp).then(function () {
                 vm.newComp = {};
                 init();
                 formModal.hide();

@@ -19,6 +19,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * A Beneficial Owner.
+ *
+ * Should not exist out of the {@link Company}'s scope.
+ *
  * @author Efthymios Sarmpanis
  */
 @Data
@@ -30,13 +34,22 @@ import lombok.NoArgsConstructor;
 @SequenceGenerator(name = "ownerId", sequenceName = "owner_id", allocationSize = 0, initialValue = 1)
 public class Owner {
 
+    /**
+     * Owner ID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ownerId")
     private Long id;
 
+    /**
+     * Owner name
+     */
     @NotEmpty
     private String name;
 
+    /**
+     * The company which is the beneficial owner.
+     */
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Company company;

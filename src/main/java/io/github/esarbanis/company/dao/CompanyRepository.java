@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import io.github.esarbanis.company.model.Company;
 
 /**
+ * Data Access Object for Companies.
+ *
  * @author Efthymios Sarmpanis
  */
 @Repository

@@ -21,6 +21,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * A Company.
+ *
  * @author Efthymios Sarmpanis
  */
 @Data
@@ -32,27 +34,51 @@ import lombok.NoArgsConstructor;
 @SequenceGenerator(name = "companyId", sequenceName = "company_id", allocationSize = 0, initialValue = 1)
 public class Company {
 
+    /**
+     * Company ID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "companyId")
     private Long id;
 
+    /**
+     * Company name
+     */
     @NotEmpty
     private String name;
 
+    /**
+     * Company address
+     */
     @NotEmpty
     private String address;
 
+    /**
+     * Company city
+     */
     @NotEmpty
     private String city;
 
+    /**
+     * Company country
+     */
     @NotEmpty
     private String country;
 
+    /**
+     * Company contact email
+     */
     @Email
     private String email;
 
+    /**
+     * Company contact phone number
+     */
     private String phone;
 
+    /**
+     * The company's beneficial owners
+     */
     @NotEmpty
     @Valid
     @OneToMany(cascade = CascadeType.ALL)

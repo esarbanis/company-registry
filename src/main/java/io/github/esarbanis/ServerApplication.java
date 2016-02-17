@@ -18,6 +18,10 @@ public class ServerApplication {
         SpringApplication.run(ServerApplication.class, args);
     }
 
+    /**
+     * Provide an instance of Validator
+     * @return a default validator instance
+     */
     @Bean
     public Validator validator() {
         return Validation.buildDefaultValidatorFactory().getValidator();

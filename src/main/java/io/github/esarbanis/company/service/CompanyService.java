@@ -16,6 +16,8 @@ import io.github.esarbanis.company.dao.CompanyRepository;
 import io.github.esarbanis.company.model.Company;
 
 /**
+ * Coordinates a combination of actions in a single transaction.
+ *
  * @author Efthymios Sarmpanis
  */
 @Service
@@ -30,12 +32,31 @@ public class CompanyService {
         this.validator = validator;
     }
 
+    /**
+     * Validates the given {@link Company} object and then persist is.
+     * <p>
+     *     In case of invalid object a {@link ConstraintViolationException} will be thrown.
+     * </p>
+     * @param company the given {@link Company} object
+     * @return the serialized {@link Company} object. Should contain ids
+     */
     @Transactional(rollbackFor = ConstraintViolationException.class)
     public Company create(Company company) {
         validate(company);
         return companyRepository.save(company);
     }
 
+    /**
+     * Checks if the given company id exists in the store, if not an {@link EntityNotFoundException}
+     * will be thrown.
+     * <p>
+     *     In the case that the company id exists, it will be replaced in the provided {@link Company}
+     *     object, to prevent updating the wrong entity.
+     * </p>
+     * @param companyId the company's, to be updated, id
+     * @param company the given {@link Company} object
+     * @return the serialized {@link Company} object
+     */
     @Transactional
     public Company update(Long companyId, Company company) {
         Optional<Company> existing = Optional.ofNullable(companyRepository.findOne(companyId));

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Company Registry</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <link rel='stylesheet'
+          href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel='stylesheet'
+          href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.bootstrap.min.css'>
+    <link rel='stylesheet'
+          href='https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.css'>
+
+    <link rel="stylesheet" href="assets/app.css"/>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body ng-app="company.registry" layout="row" ng-controller="CompanyController as ctrl" ng-cloak>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Company Registry</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="navbar-form">
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#formModal">
+                    Add
+                </button>
+            </li>
+        </ul>
+    </div><!-- /.container-fluid -->
+</nav>
+<div id="formModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add new company</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row-fluid">
+                    <company-form comp="ctrl.newComp" onsave="ctrl.save()" onupdate="ctrl.update()"></company-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-10 col-md-offset-1">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Owners</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="comp in ctrl.companies">
+                    <td>{{comp.name}}</td>
+                    <td>{{comp.address}}</td>
+                    <td>{{comp.city}}</td>
+                    <td>{{comp.country}}</td>
+                    <td>{{comp.email}}</td>
+                    <td>{{comp.phone}}</td>
+                    <td>
+                        <span ng-repeat="owner in comp.owners">{{owner.name}} </span>
+                    </td>
+                    <td class="pointer" ng-click="ctrl.edit(comp)" data-toggle="modal" data-target="#formModal"><i
+                            class="glyphicon glyphicon-pencil"></i></td>
+                    <td class="pointer" ng-click="ctrl.remove(comp)"><i class="glyphicon glyphicon-remove"></i></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.0.0/ng-tags-input.min.js"></script>
+
+<script src="company/Company.js"></script>
+<script src="company/CompanyController.js"></script>
+<script src="company/CompanyService.js"></script>
+<script src="company/CompanyDirective.js"></script>
+
+<script type="text/javascript">
+
+    angular
+            .module('company.registry', ['companies']);
+
+</script>
+
+</body>
+</html>

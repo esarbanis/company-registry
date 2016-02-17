@@ -14,6 +14,9 @@
      * @returns {{loadAllCompanies: loadAllCompanies, save: save, update: update, remove: remove}}
      */
     function CompanyService($http, $q, errorRegistry) {
+
+        var path = '/company';
+
         function ErrorHandler(response) {
             errorRegistry.addAll(response.data);
             return $q.reject();
@@ -24,7 +27,7 @@
             loadAllCompanies: function () {
                 var req = {
                     method: 'GET',
-                    url: '/company',
+                    url: path,
                     headers: {'Content-Type': 'application/json'}
                 };
                 return $http(req).then(function (response) {
@@ -34,7 +37,7 @@
             save: function (comp) {
                 var req = {
                     method: 'POST',
-                    url: '/company',
+                    url: path,
                     headers: {'Content-Type': 'application/json'},
                     data: comp
                 };
@@ -45,7 +48,7 @@
             update: function (comp) {
                 var req = {
                     method: 'PUT',
-                    url: '/company/' + comp.id,
+                    url: [path,comp.id].join('/'),
                     headers: {'Content-Type': 'application/json'},
                     data: comp
                 };
@@ -56,7 +59,7 @@
             remove: function (comp) {
                 var req = {
                     method: 'DELETE',
-                    url: '/company/' + comp.id,
+                    url: [path,comp.id].join('/'),
                     headers: {'Content-Type': 'application/json'}
                 };
                 return $http(req).then(function (response) {

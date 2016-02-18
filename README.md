@@ -28,27 +28,27 @@ Response:
  
 ```json
 {
-  "id": 7,
-  "name": "Mattel Inc.",
-  "address": "333 Continental Boulevard, California",
-  " city": "El Segundo",
-  "country": "USA",
-  "email": null,
-  "phone": null,
-  "owners": [
-    {
-      "id": 12,
-      "name": "Harold Matson"
-    },
-    {
-      "id": 13,
-      "name": "Elliot Handler"
-    },
-    {
-      "id": 14,
-      "name": "Ruth Handler"
-    }
-  ]
+  "id": 7,
+  "name": "Mattel Inc.",
+  "address": "333 Continental Boulevard, California",
+  " city": "El Segundo",
+  "country": "USA",
+  "email": null,
+  "phone": null,
+  "owners": [
+    {
+      "id": 12,
+      "name": "Harold Matson"
+    },
+    {
+      "id": 13,
+      "name": "Elliot Handler"
+    },
+    {
+      "id": 14,
+      "name": "Ruth Handler"
+    }
+  ]
 }
 ```
  
@@ -67,26 +67,26 @@ curl -H "Content-Type: application/json" \
 Response:
 ```
 [
-  {
-    "path": "name",
-    "message": "may not be empty"
-  },
-  {
-    "path": "city",
-    "message": "may not be empty"
-  },
-  {
-    "path": "owners",
-    "message": "may not be empty"
-  },
-  {
-    "path": "address",
-    "message": "may not be empty"
-  },
-  {
-    "path": "country",
-    "message": "may not be empty"
-  }
+  {
+    "path": "name",
+    "message": "may not be empty"
+  },
+  {
+    "path": "city",
+    "message": "may not be empty"
+  },
+  {
+    "path": "owners",
+    "message": "may not be empty"
+  },
+  {
+    "path": "address",
+    "message": "may not be empty"
+  },
+  {
+    "path": "country",
+    "message": "may not be empty"
+  }
 ]
 ```
 
@@ -105,115 +105,115 @@ Response:
    
 ```json
 {
-  "content": [
-    {
-      "id": 3,
-      "name": "Facebook Inc.",
-      "address": "1 Hacker Way,\nCalifornia94025",
-      "city": "Menlo Park",
-      "country": "USA",
-      "email": null,
-      "phone": null,
-      "owners": [
-        {
-          "id": 4,
-          "name": "Mark-Zuckerberg"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Alphabet Inc.",
-      "address": "Mountain View, California",
-      "city": "Mountain View",
-      "country": "USA",
-      "email": null,
-      "phone": null,
-      "owners": [
-        {
-          "id": 5,
-          "name": "Larry Page"
-        },
-        {
-          "id": 6,
-          "name": "Sergey Brin"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Google Inc.",
-      "address": "Menlo Park,California",
-      "city": "Menlo Park",
-      "country": "USA",
-      "email": null,
-      "phone": null,
-      "owners": [
-        {
-          "id": 7,
-          "name": "Larry-Page"
-        },
-        {
-          "id": 8,
-          "name": "Sergey-Brin"
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Mattel Inc.",
-      "address": "333 Continental Boulevard, California",
-      "city": "El Segundo",
-      "country": "USA",
-      "email": null,
-      "phone": null,
-      "owners": [
-        {
-          "id": 9,
-          "name": "Harold-Matson"
-        },
-        {
-          "id": 10,
-          "name": "Elliot-Handler"
-        },
-        {
-          "id": 11,
-          "name": "Ruth-Handler"
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "name": "Mattel Inc.",
-      "address": "333 Continental Boulevard, California",
-      "city": "El Segundo",
-      "country": "USA",
-      "email": null,
-      "phone": null,
-      "owners": [
-        {
-          "id": 12,
-          "name": "Harold-Matson"
-        },
-        {
-          "id": 13,
-          "name": "Elliot-Handler"
-        },
-        {
-          "id": 14,
-          "name": "Ruth-Handler"
-        }
-      ]
-    }
-  ],
-  "last": true,
-  "totalPages": 1,
-  "totalElements": 5,
-  "first": true,
-  "numberOfElements": 5,
-  "sort": null,
-  "size": 20,
-  "number": 0
+  "content": [
+    {
+      "id": 3,
+      "name": "Facebook Inc.",
+      "address": "1 Hacker Way,\nCalifornia94025",
+      "city": "Menlo Park",
+      "country": "USA",
+      "email": null,
+      "phone": null,
+      "owners": [
+        {
+          "id": 4,
+          "name": "Mark-Zuckerberg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Alphabet Inc.",
+      "address": "Mountain View, California",
+      "city": "Mountain View",
+      "country": "USA",
+      "email": null,
+      "phone": null,
+      "owners": [
+        {
+          "id": 5,
+          "name": "Larry Page"
+        },
+        {
+          "id": 6,
+          "name": "Sergey Brin"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Google Inc.",
+      "address": "Menlo Park,California",
+      "city": "Menlo Park",
+      "country": "USA",
+      "email": null,
+      "phone": null,
+      "owners": [
+        {
+          "id": 7,
+          "name": "Larry-Page"
+        },
+        {
+          "id": 8,
+          "name": "Sergey-Brin"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Mattel Inc.",
+      "address": "333 Continental Boulevard, California",
+      "city": "El Segundo",
+      "country": "USA",
+      "email": null,
+      "phone": null,
+      "owners": [
+        {
+          "id": 9,
+          "name": "Harold-Matson"
+        },
+        {
+          "id": 10,
+          "name": "Elliot-Handler"
+        },
+        {
+          "id": 11,
+          "name": "Ruth-Handler"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Mattel Inc.",
+      "address": "333 Continental Boulevard, California",
+      "city": "El Segundo",
+      "country": "USA",
+      "email": null,
+      "phone": null,
+      "owners": [
+        {
+          "id": 12,
+          "name": "Harold-Matson"
+        },
+        {
+          "id": 13,
+          "name": "Elliot-Handler"
+        },
+        {
+          "id": 14,
+          "name": "Ruth-Handler"
+        }
+      ]
+    }
+  ],
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 5,
+  "first": true,
+  "numberOfElements": 5,
+  "sort": null,
+  "size": 20,
+  "number": 0
 }
 ```
    
@@ -235,27 +235,27 @@ Response:
     
 ```json
 {
-  "id": 7,
-  "name": "Mattel Inc.",
-  "address": "333 Continental Boulevard, California",
-  " city": "El Segundo",
-  "country": "USA",
-  "email": null,
-  "phone": null,
-  "owners": [
-    {
-      "id": 12,
-      "name": "Harold Matson"
-    },
-    {
-      "id": 13,
-      "name": "Elliot Handler"
-    },
-    {
-      "id": 14,
-      "name": "Ruth Handler"
-    }
-  ]
+  "id": 7,
+  "name": "Mattel Inc.",
+  "address": "333 Continental Boulevard, California",
+  " city": "El Segundo",
+  "country": "USA",
+  "email": null,
+  "phone": null,
+  "owners": [
+    {
+      "id": 12,
+      "name": "Harold Matson"
+    },
+    {
+      "id": 13,
+      "name": "Elliot Handler"
+    },
+    {
+      "id": 14,
+      "name": "Ruth Handler"
+    }
+  ]
 }
 ```
  
@@ -276,10 +276,10 @@ Response:
 Response:
 ```json
 [
-  {
-    "path": "name",
-    "message": "may not be empty"
-  }
+  {
+    "path": "name",
+    "message": "may not be empty"
+  }
 ]
 ```
 
@@ -299,27 +299,27 @@ Response:
 - Company exists:
 ```json
 {
-  "id": 7,
-  "name": "Mattel Inc.",
-  "address": "333 Continental Boulevard, California",
-  " city": "El Segundo",
-  "country": "USA",
-  "email": null,
-  "phone": null,
-  "owners": [
-    {
-      "id": 12,
-      "name": "Harold Matson"
-    },
-    {
-      "id": 13,
-      "name": "Elliot Handler"
-    },
-    {
-      "id": 14,
-      "name": "Ruth Handler"
-    }
-  ]
+  "id": 7,
+  "name": "Mattel Inc.",
+  "address": "333 Continental Boulevard, California",
+  " city": "El Segundo",
+  "country": "USA",
+  "email": null,
+  "phone": null,
+  "owners": [
+    {
+      "id": 12,
+      "name": "Harold Matson"
+    },
+    {
+      "id": 13,
+      "name": "Elliot Handler"
+    },
+    {
+      "id": 14,
+      "name": "Ruth Handler"
+    }
+  ]
 }
 ```
 

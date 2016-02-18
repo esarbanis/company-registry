@@ -50,7 +50,7 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
                 .email("email@mail.com")
                 .owners(Collections.singletonList(Owner.builder()
                         .name("Test Owner").build())).build();
-        RequestEntity<Company> requestEntity = RequestEntity.post(URI.create("/company")).body(company);
+        RequestEntity<Company> requestEntity = RequestEntity.post(URI.create("/company")).header("Authorization", "Basic ZGVtbzpkZW1v").body(company);
         // arrange
         ParameterizedTypeReference<Company> responseType =
                 new ParameterizedTypeReference<Company>() {
@@ -77,7 +77,7 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
                 .email("invalid")
                 .owners(Collections.singletonList(Owner.builder()
                         .name("Test Owner").build())).build();
-        RequestEntity<Company> requestEntity = RequestEntity.post(URI.create("/company")).body(company);
+        RequestEntity<Company> requestEntity = RequestEntity.post(URI.create("/company")).header("Authorization", "Basic ZGVtbzpkZW1v").body(company);
         // arrange
         ParameterizedTypeReference<Collection<GlobalExceptionHandler.Violation>> responseType =
                 new ParameterizedTypeReference<Collection<GlobalExceptionHandler.Violation>>() {
@@ -108,7 +108,7 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
                 .email("email2@mail.com")
                 .owners(Collections.singletonList(Owner.builder()
                         .name("Test Owner 2").build())).build();
-        RequestEntity<Company> requestEntity = RequestEntity.post(URI.create("/company")).body(company);
+        RequestEntity<Company> requestEntity = RequestEntity.post(URI.create("/company")).header("Authorization", "Basic ZGVtbzpkZW1v").body(company);
         // arrange
         ParameterizedTypeReference<Company> responseType =
                 new ParameterizedTypeReference<Company>() {
@@ -127,13 +127,14 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void _3GetCompanies() throws Exception {
+        RequestEntity<Void> requestEntity = RequestEntity.get(URI.create("/company")).header("Authorization", "Basic ZGVtbzpkZW1v").build();
         // arrange
         ParameterizedTypeReference<PageImplBean<Company>> responseType =
                 new ParameterizedTypeReference<PageImplBean<Company>>() {
                 };
         // act
         ResponseEntity<PageImplBean<Company>> responseEntity =
-                exchange("/company", GET, null, responseType);
+                exchange("/company", GET, requestEntity, responseType);
         // assert
         HttpStatus statusCode = responseEntity.getStatusCode();
         assertEquals(HttpStatus.OK, statusCode);
@@ -145,13 +146,14 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void _3GetCompany() throws Exception {
+        RequestEntity<Void> requestEntity = RequestEntity.get(URI.create("/company/1")).header("Authorization", "Basic ZGVtbzpkZW1v").build();
         // arrange
         ParameterizedTypeReference<Company> responseType =
                 new ParameterizedTypeReference<Company>() {
                 };
         // act
         ResponseEntity<Company> responseEntity =
-                exchange("/company/1", GET, null, responseType);
+                exchange("/company/1", GET, requestEntity, responseType);
         // assert
         HttpStatus statusCode = responseEntity.getStatusCode();
         assertEquals(HttpStatus.OK, statusCode);
@@ -163,11 +165,12 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void _4UpdateFirstCompany() throws Exception {
+        RequestEntity<Void> getRequestEntity = RequestEntity.get(URI.create("/company/1")).header("Authorization", "Basic ZGVtbzpkZW1v").build();
         ParameterizedTypeReference<Company> getResponseType =
                 new ParameterizedTypeReference<Company>() {};
-        Company company = exchange("/company/1", GET, null, getResponseType).getBody();
+        Company company = exchange("/company/1", GET, getRequestEntity, getResponseType).getBody();
         company.setName("Awesomeness Inc.");
-        RequestEntity<Company> requestEntity = RequestEntity.put(URI.create("/company/1")).body(company);
+        RequestEntity<Company> requestEntity = RequestEntity.put(URI.create("/company/1")).header("Authorization", "Basic ZGVtbzpkZW1v").body(company);
         // arrange
         ParameterizedTypeReference<Company> responseType =
                 new ParameterizedTypeReference<Company>() {
@@ -196,7 +199,7 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
                 .email("email2@mail.com")
                 .owners(Collections.singletonList(Owner.builder()
                         .name("Test Owner 2").build())).build();
-        RequestEntity<Company> requestEntity = RequestEntity.put(URI.create("/company/5")).body(company);
+        RequestEntity<Company> requestEntity = RequestEntity.put(URI.create("/company/5")).header("Authorization", "Basic ZGVtbzpkZW1v").body(company);
         // arrange
         ParameterizedTypeReference<Company> responseType =
                 new ParameterizedTypeReference<Company>() {
@@ -211,13 +214,14 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void _6DeleteExistingCompany() throws Exception {
+        RequestEntity<Void> requestEntity = RequestEntity.get(URI.create("/company/1")).header("Authorization", "Basic ZGVtbzpkZW1v").build();
         // arrange
         ParameterizedTypeReference<Void> responseType =
                 new ParameterizedTypeReference<Void>() {
                 };
         // act
         ResponseEntity<Void> responseEntity =
-                exchange("/company/1", DELETE, null, responseType);
+                exchange("/company/1", DELETE, requestEntity, responseType);
         // assert
         HttpStatus statusCode = responseEntity.getStatusCode();
         assertEquals(HttpStatus.NO_CONTENT, statusCode);
@@ -225,13 +229,14 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void _7DeleteNonExistingCompany() throws Exception {
+        RequestEntity<Void> requestEntity = RequestEntity.get(URI.create("/company/5")).header("Authorization", "Basic ZGVtbzpkZW1v").build();
         // arrange
         ParameterizedTypeReference<Void> responseType =
                 new ParameterizedTypeReference<Void>() {
                 };
         // act
         ResponseEntity<Void> responseEntity =
-                exchange("/company/5", DELETE, null, responseType);
+                exchange("/company/5", DELETE, requestEntity, responseType);
         // assert
         HttpStatus statusCode = responseEntity.getStatusCode();
         assertEquals(HttpStatus.NOT_FOUND, statusCode);
@@ -239,13 +244,14 @@ public class CompanyIntegrationTest extends BaseIntegrationTest {
 
     @Test
     public void _8ConfirmDeletion() throws Exception {
+        RequestEntity<Void> requestEntity = RequestEntity.get(URI.create("/company")).header("Authorization", "Basic ZGVtbzpkZW1v").build();
         // arrange
         ParameterizedTypeReference<PageImplBean<Company>> responseType =
                 new ParameterizedTypeReference<PageImplBean<Company>>() {
                 };
         // act
         ResponseEntity<PageImplBean<Company>> responseEntity =
-                exchange("/company", GET, null, responseType);
+                exchange("/company", GET, requestEntity, responseType);
         // assert
         HttpStatus statusCode = responseEntity.getStatusCode();
         assertEquals(HttpStatus.OK, statusCode);

@@ -6,7 +6,7 @@
 - To build and run tests: `$>mvn clean package`
 - To run standalone: 
 ```sh
-$> java -jar target/company-registry-0.0.1-SNAPSHOT.jar \
+$> java -jar target/company-registry-0.0.1.jar \
     --server.port=8888 \
     --spring.jpa.database=h2 \
     --spring.datasource.platform=h2 \

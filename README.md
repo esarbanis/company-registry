@@ -10,7 +10,7 @@ $> java -jar target/company-registry-0.0.2-SNAPSHOT.jar \
     --server.port=8888 \
     --spring.jpa.database=h2 \
     --spring.datasource.platform=h2 \
-    --spring.datasource.driver-class-name=org.h2.Driver`
+    --spring.datasource.driver-class-name=org.h2.Driver
 ```
 and navigate to [http://localhost:8888](http://localhost:8888)
 

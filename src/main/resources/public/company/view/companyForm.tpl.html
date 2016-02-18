@@ -31,7 +31,7 @@
     </div>
     <div class="form-group" ng-class="{'has-error': errorRegistry.hasError('owners')}">
         <label>Owners</label>
-        <tags-input ng-model="comp.owners" display-property="name"></tags-input>
+        <tags-input replace-spaces-with-dashes="false" ng-model="comp.owners" display-property="name"></tags-input>
         <span ng-if="errorRegistry.hasError('owners')" class="help-block">{{errorRegistry.getMessage('owners')}}</span>
     </div>
     <button type="submit" ng-if="!comp.id" class="btn btn-default" ng-click="compForm.$valid ? onsave() : return;">Save</button>

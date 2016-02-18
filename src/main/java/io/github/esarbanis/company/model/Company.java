@@ -81,6 +81,6 @@ public class Company {
      */
     @NotEmpty
     @Valid
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Owner> owners;
 }

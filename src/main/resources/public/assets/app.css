@@ -1,3 +1,7 @@
 .pointer {
     cursor: pointer;
 }
+
+ti-tag-item span {
+    color: #337ab7;
+}

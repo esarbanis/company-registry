@@ -5,7 +5,7 @@ spring:
   jpa:
     database: h2
     generate-ddl: true
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: update
   datasource:

@@ -10,7 +10,7 @@ spring:
   jpa:
     database: POSTGRESQL
     generate-ddl: true
-    show-sql: true
+    show-sql: false
   datasource:
     initialize: false # set to true to initialize data and schema
     platform: postgres

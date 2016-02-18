@@ -51,7 +51,7 @@
          * @param comp the company to edit
          */
         function Edit(comp) {
-            vm.newComp = angular.extend({}, comp);
+            vm.newComp = angular.merge({}, comp);
             formModal.show();
         }
 

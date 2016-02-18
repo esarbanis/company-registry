@@ -405,6 +405,4 @@ In order to use 2nd level cache in the scaling solution, an additional module sh
 
 ## Known issues
 
-[#1: Demo site does not render on /.](https://github.com/esarbanis/company-registry/issues/1)
-
-[#2: When accessing the demo site with htts the client breaks. ](https://github.com/esarbanis/company-registry/issues/2)
+[List of known issues](https://github.com/esarbanis/company-registry/issues/)

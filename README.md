@@ -1,5 +1,19 @@
 # Company Registry
 
+## Building
+
+- Prerequisites: `maven`, `JDK 8`
+- To build and run tests: `$>mvn clean package`
+- To run standalone: 
+```sh
+$> java -jar target/company-registry-0.0.1-SNAPSHOT.jar \
+    --server.port=8888 \
+    --spring.jpa.database=h2 \
+    --spring.datasource.platform=h2 \
+    --spring.datasource.driver-class-name=org.h2.Driver`
+```
+and navigate to [http://localhost:8888](http://localhost:8888)
+
 ## Backend API
 
  URL | HTTP Verb | Functionality
@@ -387,3 +401,8 @@ In order to have scaling support the application should split the backend and fr
 In order to use 2nd level cache in the scaling solution, an additional module should be introduced to manage all IO with the persistent store.
 
 ![Scaled No 2nd level cache](assets/CompanyRegistryScaledWithMicroservices.png)
+
+## Known issues
+
+[#1: Demo site does not render on /.](https://github.com/esarbanis/company-registry/issues/1)
+[#2: When accessing the demo site with htts the client breaks. ](https://github.com/esarbanis/company-registry/issues/2)
